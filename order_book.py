@@ -248,11 +248,23 @@ class OrderBookPanel:
 
         ws_url = f"wss://stream.binance.com:9443/ws/{self.symbol.lower()}@depth10@100ms"
 
+        def on_error(ws, e):
+            if not self.is_active:
+                return
+            
+            if 'sock' in str(e):
+                return
+            
+            print("OrderBook error:", e)
+
+        def on_close(ws, *args):
+            pass  # silent close
+
         self.ws = websocket.WebSocketApp(
             ws_url,
             on_message=self.on_message,
-            on_error=lambda ws, e: print("OrderBook error:", e),
-            on_close=lambda ws, *_: print("OrderBook closed"),
+            on_error=on_error,
+            on_close=on_close
         )
 
         threading.Thread(target=self.ws.run_forever, daemon=True).start()
@@ -262,16 +274,24 @@ class OrderBookPanel:
 
 
     def stop(self):
+        if not self.is_active:
+            return
+        
         self.is_active = False
         self._generation += 1
-
+        
+        ws = self.ws
+        self.ws = None
+        
         if self._ui_job:
             self.parent.after_cancel(self._ui_job)
             self._ui_job = None
 
-        if self.ws:
-            self.ws.close()
-            self.ws = None
+        if ws:
+            try:
+                ws.close()
+            except Exception:
+                pass
     
 
     def update_display(self, b_P, b_Q, a_P, a_Q):

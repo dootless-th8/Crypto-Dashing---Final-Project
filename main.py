@@ -27,7 +27,7 @@ class ToggleableTickerApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Crypto Dashboard")
-        self.root.minsize(1000, 730)
+        self.root.minsize(1400, 730)
         self.root.geometry("1400x1000")
         self.current_sym = "btcusdt"
         self.token_buttons = {}
@@ -140,7 +140,7 @@ class ToggleableTickerApp:
             btn.state(["!pressed"])
             if k == name:
                 btn.state(["pressed"])
-
+        
 
     def start_all(self):
         self.btc_ticker.start()

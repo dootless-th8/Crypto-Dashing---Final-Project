@@ -50,7 +50,9 @@ class CryptoTicker:
         # Change
         self.change_label = ttk.Label(self.frame, text="--", font=("Arial", 12), background='gray19')
         self.change_label.pack()
+
     
+
     def start(self):
         """Start WebSocket connection."""
         if self.is_active:
@@ -61,12 +63,25 @@ class CryptoTicker:
         gen = self._generation
 
         ws_url = f"wss://stream.binance.com:9443/ws/{self.symbol}@ticker"
-        
+
+        def on_error(self, ws, err):
+            if not self.is_active:
+                return
+
+            if "sock" in str(err):
+                return
+
+            print(f"{self.symbol} error:", err)
+
+
+        def on_close(self, ws, *args):
+            pass
+
         self.ws = websocket.WebSocketApp(
             ws_url,
             on_message=self.on_message,
-            on_error=lambda ws, err: print(f"{self.symbol} error: {err}"),
-            on_close=lambda ws, s, m: print(f"{self.symbol} closed"),
+            on_error=on_error,
+            on_close=on_close,
             on_open=lambda ws: print(f"{self.symbol} connected")
         )
         
