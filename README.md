@@ -39,6 +39,7 @@ This project is designed as a modular desktop application, with each market comp
 
 ```bash
 |   Crypto-Dashing---Final-Project
+|   ├── reuirements.txt  # Dependecies
 |   ├── main.py          # Application entry point & layout
 |   ├── ticker.py        # Live price ticker (WebSocket)
 |   ├── order_book.py    # Order book / depth panel (WebSocket)

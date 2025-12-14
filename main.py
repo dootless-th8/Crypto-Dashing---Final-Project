@@ -28,7 +28,7 @@ class ToggleableTickerApp:
         self.root = root
         self.root.title("Crypto Dashboard")
         self.root.minsize(1000, 730)
-        self.root.geometry("1200x1000")
+        self.root.geometry("1400x1000")
         self.current_sym = "btcusdt"
         self.token_buttons = {}
 
