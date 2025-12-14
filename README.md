@@ -45,7 +45,7 @@ This project is designed as a modular desktop application, with each market comp
 |   ├── order_book.py    # Order book / depth panel (WebSocket)
 |   ├── technical.py     # Technical analysis charts (Matplotlib)
 |   ├── futures.py       # Buy/Sell volume ratio panels (REST)
-|   ├── Crypto-showcase.mkv  # Video Showcase
+|   ├── Crypto_showcase.mkv  # Video Showcase
 |   ├── Figma_ui_design.png  # Png Showcasing the ui layout design
 |   └── README.md        # The file you're reading
 ```
