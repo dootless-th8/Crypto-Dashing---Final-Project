@@ -129,6 +129,7 @@ class ToggleableTickerApp:
 
         self.current_sym = symbol
 
+        self.tick_btn.configure(text=f"Show {self.current_sym.upper()}/USDT")
         self.btc_ticker.set_symbol(symbol, f"{name}/USDT")
         self.Order.set_symbol(symbol)
         self.technic.set_symbol(symbol)
