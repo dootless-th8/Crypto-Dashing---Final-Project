@@ -206,10 +206,10 @@ class OrderBookPanel:
             bids = self._latest_bids
             asks = self._latest_asks
 
-            b_P = "\n".join(f"{float(p):.2f}" for p, _ in bids)
-            b_Q = "\n".join(f"{float(q):.4f}" for _, q in bids)
-            a_P = "\n".join(f"{float(p):.2f}" for p, _ in asks)
-            a_Q = "\n".join(f"{float(q):.4f}" for _, q in asks)
+            b_P = "\n".join(f"{float(p):,.2f}" for p, _ in bids)
+            b_Q = "\n".join(f"{float(q):,.4f}" for _, q in bids)
+            a_P = "\n".join(f"{float(p):,.2f}" for p, _ in asks)
+            a_Q = "\n".join(f"{float(q):,.4f}" for _, q in asks)
 
             best_bid = float(bids[0][0])
             best_ask = float(asks[0][0])

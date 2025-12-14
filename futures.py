@@ -120,9 +120,9 @@ class BuySellRatioPanel:
         if not self.running:
             return
 
-        self.buy_lbl.config(text=f"Buy: {buy_vol:.2f}")
-        self.sell_lbl.config(text=f"Sell: {sell_vol:.2f}")
-        self.ratio_lbl.config(text=f"Ratio: {ratio:.3f}")
+        self.buy_lbl.config(text=f"Buy: {buy_vol:,.2f}")
+        self.sell_lbl.config(text=f"Sell: {sell_vol:,.2f}")
+        self.ratio_lbl.config(text=f"Ratio: {ratio:,.3f}")
 
   
     
